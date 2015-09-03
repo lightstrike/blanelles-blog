@@ -1,22 +1,13 @@
-<html>	
-	<head>
-		<title>Blanelle's World</title>
-	</head>
-	<body>
-		<div>
-			<h1><a href="">Blanelle's World</a></h1>
-		</div>
+{% extends "blog/base.html" %}
+
+{% block content %}
 	{% for post in posts %}
-		<div>
-			<p>published: {{ post.published_date }}</p>
-			<h1><a href="">{{ post.title }}</a></h1>
+		<div class="post">
+			<div class="date">
+				{{ post.published_date }}
+			</div>
+			<h1><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h1>
 			<p>{{ post.text|linebreaks }}</p>
 		</div>
 	{% endfor %}
-		<div>
-			<p>published: 14.06.2014, 12:14</p>
-			<h2><a href="">My second post</a></h2>
-			<p>Back again, wanted to talk more about my site wiht you.</p>
-		</div>
-	</body>
-</html>
+{% endblock content %}				
